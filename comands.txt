@@ -1,0 +1,23 @@
+npx prisma migrate dev
+npx prisma studio
+npx prisma init
+npx prisma generate
+
+docker compose up
+docker compose stop
+docker stop id
+docker rm id
+docker ps 
+docker ps -a
+docker run ....
+
+
+npm i typescript @types/node tsx tsup -D
+npm i eslint @rocketseat/eslint-config -D
+npm i dotenv
+npm i zod
+npm i fastify
+npm i @prisma/client
+npm i bcryptjs
+npm i @types/bryptsjs
+
