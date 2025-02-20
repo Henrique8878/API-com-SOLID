@@ -36,6 +36,7 @@
     "@types/bcryptjs": "2.4.6",
     "bcryptjs": "3.0.0",
     "D": "1.0.0",
+    "dayjs": "1.11.13",
     "dotenv": "16.4.7",
     "fastify": "5.2.1",
     "zod": "3.24.2"

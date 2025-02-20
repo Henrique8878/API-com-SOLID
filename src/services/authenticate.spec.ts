@@ -1,7 +1,7 @@
 import { test, expect, describe, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from './in-memory/in-memory-users-repository'
 import { hash } from 'bcryptjs'
-import { AuthenticateService } from './Authenticate'
+import { AuthenticateService } from './authenticate'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 
 let inMemoryRepository: InMemoryUsersRepository

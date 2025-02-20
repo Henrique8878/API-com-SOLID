@@ -2,11 +2,12 @@
 
 // Este é o arquivo que abrigará a função de register, mas terão outras requisições pela frente, e todas irão para o routes.ts.
 
+// factory pattern, fábrica de riação de coisas comuns, sempre quando tivermos um código que utilizaremos em várias partes da aplicaçãoo e ele recebe várias dependências, tuilizo o factory pattern.
+
 import { FastifyReply, FastifyRequest } from 'fastify'
 import * as z from 'zod'
-import { RegisterService } from '@/services/register'
-import { PrismaUserRepository } from '@/repositories/prisma-user-repository'
 import { UserAlreadyExists } from '@/services/errors/user-already-exists'
+import { makeRegisterService } from '@/services/factories/make-register-service'
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const bodySchema = z.object({
@@ -18,8 +19,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const { name, email, password } = bodySchema.parse(request.body)
 
   try {
-    const prismaRepository = new PrismaUserRepository()
-    const registerService = new RegisterService(prismaRepository)
+    const registerService = makeRegisterService()
     await registerService.execute({ name, email, password })
   } catch (e) {
     if (e instanceof UserAlreadyExists) {
