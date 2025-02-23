@@ -8,7 +8,7 @@ import { CheckinNotAllowedOnTheSameDay } from './errors/checkin-not-allowed-on-t
 interface checkInParams {
   userId: string
   gymId: string
-  userLatitute: number
+  userLatitude: number
   userLongitude: number
 }
 
@@ -18,14 +18,14 @@ export class CheckInService {
     private gymRepository: GymRepository,
   ) {}
 
-  async execute({ userId, gymId, userLatitute, userLongitude }: checkInParams) {
+  async execute({ userId, gymId, userLatitude, userLongitude }: checkInParams) {
     const isGym = await this.gymRepository.findById(gymId)
     if (!isGym) {
       throw new ResourceNotFount()
     }
 
     const distance = getDistanceBetweenCoordinates(
-      { latitude: userLatitute, longitude: userLongitude },
+      { latitude: userLatitude, longitude: userLongitude },
       {
         latitude: isGym.latitude.toNumber(),
         longitude: isGym.longitude.toNumber(),

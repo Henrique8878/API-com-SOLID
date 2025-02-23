@@ -3,7 +3,28 @@ import { Prisma, CheckIn } from '@prisma/client'
 import dayjs from 'dayjs'
 
 export class InMemoryCheckInRepository implements CheckInRepository {
-  private items: CheckIn[] = []
+  public items: CheckIn[] = []
+
+  async saveCheckin(checkIn: CheckIn) {
+    const indexCheckin = await this.items.findIndex(
+      (item) => checkIn.id === item.id,
+    )
+    if (indexCheckin >= 0) {
+      this.items[indexCheckin] = checkIn
+    }
+
+    return checkIn
+  }
+
+  async findCheckInById(checkInId: string) {
+    const checkin = this.items.find((item) => checkInId === item.id)
+
+    if (!checkin) {
+      return null
+    }
+
+    return checkin
+  }
 
   async countNumberCheckins(userId: string): Promise<number | null> {
     const numberCheckins = this.items.reduce((accumulator, item) => {

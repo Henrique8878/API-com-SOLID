@@ -39,7 +39,7 @@ describe('tests from get-user-profile service', () => {
     const { checkIn } = await checkInService.execute({
       userId: 'user-01',
       gymId: 'gym-01',
-      userLatitute: 0,
+      userLatitude: 0,
       userLongitude: 0,
     })
 
@@ -51,7 +51,7 @@ describe('tests from get-user-profile service', () => {
     const { checkIn } = await checkInService.execute({
       userId: 'user-01',
       gymId: 'gym-01',
-      userLatitute: 0,
+      userLatitude: 0,
       userLongitude: 0,
     })
     console.log(checkIn.created_at)
@@ -61,7 +61,7 @@ describe('tests from get-user-profile service', () => {
         await checkInService.execute({
           userId: 'user-01',
           gymId: 'gym-01',
-          userLatitute: 0,
+          userLatitude: 0,
           userLongitude: 0,
         }),
     ).rejects.toBeInstanceOf(Error)
@@ -72,7 +72,7 @@ describe('tests from get-user-profile service', () => {
     await checkInService.execute({
       userId: 'user-01',
       gymId: 'gym-01',
-      userLatitute: 0,
+      userLatitude: 0,
       userLongitude: 0,
     })
 
@@ -81,7 +81,7 @@ describe('tests from get-user-profile service', () => {
     const { checkIn } = await checkInService.execute({
       userId: 'user-01',
       gymId: 'gym-01',
-      userLatitute: 0,
+      userLatitude: 0,
       userLongitude: 0,
     })
 
@@ -103,7 +103,7 @@ describe('tests from get-user-profile service', () => {
         await checkInService.execute({
           userId: 'user-01',
           gymId: 'gym-02',
-          userLatitute: -21.232997,
+          userLatitude: -21.232997,
           userLongitude: -44.989087,
         }),
     ).rejects.toBeInstanceOf(Error)
