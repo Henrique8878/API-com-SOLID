@@ -1,17 +1,17 @@
 import { GymRepository } from '@/repositories/gym-repository'
 
 interface NearbyGysServiceParams {
-  userLatitude: number
-  userLongitude: number
+  latitude: number
+  longitude: number
 }
 
 export class NearbyGymsService {
   constructor(private gymRepository: GymRepository) {}
 
-  async execute({ userLatitude, userLongitude }: NearbyGysServiceParams) {
+  async execute({ latitude, longitude }: NearbyGysServiceParams) {
     const nearbyGyms = await this.gymRepository.findManyNearbyGyms(
-      userLatitude,
-      userLongitude,
+      latitude,
+      longitude,
     )
 
     if (!nearbyGyms) {
